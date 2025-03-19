@@ -9,10 +9,9 @@
 
 TEST(LinkedListTest, GetNode) {
     auto* linked_list = new LinkedList<int>();
-    auto* newNode = new Node(4);
-    linked_list->insert(newNode);
+    linked_list->insert(4);
     Node<int>* gotten_node = linked_list->get(0);
-    ASSERT_EQ(gotten_node, newNode);
+    ASSERT_EQ(4, gotten_node->get_data());
 }
 
 TEST(LinkedListTest, GetNodeLargeIndex) {
