@@ -1,5 +1,7 @@
 
 #include <iostream>
+
+#include "graph.h"
 #include "linked_list.h"
 #include "node.h"
 #include "queue.h"
@@ -8,11 +10,16 @@
 #include "../exceptions/stack_underflow_exception.h"
 
 int main() {
-    auto* linked_list = new LinkedList();
+    Graph<int>* graph = new Graph<int>();
 
-    linked_list->insert(new Node(1));
-    linked_list->insert(new Node(2));
+    Node<int>* epic_node = new Node<int>(4);
+    Node<int>* another_epic_node = new Node<int>(5);
 
-    delete linked_list;
+    graph->add_node(another_epic_node);
+    graph->add_node(epic_node);
+
+    epic_node->add_edge(another_epic_node);
+    another_epic_node->add_edge(epic_node);
+
     return 0;
 }
