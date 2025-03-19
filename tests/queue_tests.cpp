@@ -3,15 +3,13 @@
 //
 
 #include "../exceptions/queue_underflow_exception.h"
-#ifndef QUEUE_TESTS_H
-#define QUEUE_TESTS_H
 #include <gtest/gtest.h>
 
 #include "queue.h"
 #include "../exceptions/queue_overflow_exception.h"
 
 TEST(QueueTests, Enqueue) {
-    auto* queue = new Queue(3);
+    auto* queue = new Queue<int>(3);
     try {
         queue->enqueue(new Node(3));
     } catch (QueueOverflowException e ) {
@@ -21,7 +19,7 @@ TEST(QueueTests, Enqueue) {
 }
 
 TEST(QueueTests, Dequeue) {
-    auto* queue = new Queue(3);
+    auto* queue = new Queue<int>(3);
     try {
         queue->enqueue(new Node(3));
         queue->enqueue(new Node(2));
@@ -30,5 +28,3 @@ TEST(QueueTests, Dequeue) {
     }
     ASSERT_EQ(queue->peek(), 2);
 }
-
-#endif //QUEUE_TESTS_H
