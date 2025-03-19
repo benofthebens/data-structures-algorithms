@@ -3,23 +3,34 @@
 //
 #include "node.h"
 
-Node::Node(int const data) {
-    this->pointer = nullptr;
+
+template <typename T>
+Node<T>::Node(T const data) {
+    this->pointers = new std::vector<Node*>;
     this->data = data;
 }
-
-Node::~Node() {
-    this->pointer = nullptr;
+template <typename T>
+Node<T>::~Node() {
 }
 
-void Node::set_pointer(Node *node) {
-    pointer = node;
+template <typename T>
+void Node<T>::add_edge(Node<T> *node) {
+    pointers->push_back(node);
 }
 
-int Node::get_data() {
+template <typename T>
+T Node<T>::get_data() {
     return data;
 }
 
-Node *Node::get_pointer() const {
-    return pointer;
+template <typename T>
+Node<T> *Node<T>::get_pointer(int i) const {
+    return pointers->at(i);
 }
+
+template <typename T>
+void Node<T>::set_edge(int i, Node<T>* node) {
+    pointers->at(0) = node;
+}
+
+template class Node<int>;

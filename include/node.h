@@ -4,15 +4,21 @@
 
 #ifndef NODE_H
 #define NODE_H
+#include <vector>
+
+template <typename T>
 class Node {
   public:
-    Node(int data);
+    Node(T data);
     ~Node();
-    int get_data();
-    Node* get_pointer() const;
-    void set_pointer(Node* node);
+    T get_data();
+
+    Node<T> *get_pointer(int i) const;
+    std::vector<Node*>* get_pointers() const;
+    void add_edge(Node<T>* node);
+    void set_edge(int i, Node<T>* node);
   private:
-    Node* pointer;
-    int data;
+    std::vector<Node<T>*>* pointers;
+    T data;
 };
 #endif //NODE_H
