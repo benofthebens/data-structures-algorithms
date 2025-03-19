@@ -14,8 +14,10 @@ Node<T>::~Node() {
 }
 
 template <typename T>
-void Node<T>::add_edge(Node<T> *node) {
+void Node<T>::add_edge(Node<T> *node, bool directed ) {
     pointers->push_back(node);
+    if (!directed)
+        node->add_edge(this, true);
 }
 
 template <typename T>
@@ -34,3 +36,4 @@ void Node<T>::set_edge(int i, Node<T>* node) {
 }
 
 template class Node<int>;
+template class Node<Node<int>*>;
