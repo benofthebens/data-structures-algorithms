@@ -16,12 +16,12 @@ TEST(LinkedListTest, GetNode) {
 
 TEST(LinkedListTest, GetNodeLargeIndex) {
     auto* linked_list = new LinkedList<int>();
-    linked_list->insert(new Node<int>(4));
+    linked_list->insert(4);
     ASSERT_EQ(linked_list->get(1), nullptr);
 }
 
 TEST(LinkedListTest, GetNodeSmallIndex) {
     auto* linked_list = new LinkedList<int>();
-    linked_list->insert(new Node<int>(4));
+    linked_list->insert(4);
     ASSERT_EQ(linked_list->get(-1), nullptr);
 }
