@@ -7,29 +7,31 @@
 #include "../exceptions/stack_overflow_exception.h"
 #include "../exceptions/stack_underflow_exception.h"
 
-Stack::Stack(int const size) {
-    this->list = new LinkedList();
+template <typename T>
+Stack<T>::Stack(int const size) {
+    this->list = new LinkedList<T>();
     this->size = size;
 }
-
-Stack::~Stack() {
+template <typename T>
+Stack<T>::~Stack() {
     delete list;
 }
-
-void Stack::push(Node* data) const {
+template <typename T>
+void Stack<T>::push(Node<T>* data) const {
     if (list->get_length() >= size)
         throw StackOverFlowException(data->get_data());
     list->insert(data);
 }
-
-int Stack::peek() const {
+template <typename T>
+T Stack<T>::peek() const {
     return list->get(list->get_length() - 1)->get_data();
 }
-
-int Stack::pop() {
+template <typename T>
+T Stack<T>::pop() {
     if (list->get_length() == 0)
         throw StackUnderFlowException();
 
     return list->remove_at(list->get_length() - 1);
 }
+template class Stack<int>;
 

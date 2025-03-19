@@ -7,16 +7,17 @@
 
 #include "linked_list.h"
 
+template <typename T>
+
 class Stack {
 public:
     Stack(int size);
     ~Stack();
-    void push(Node *data) const;
-    int pop();
-    int peek() const;
-    int pop() const;
+    void push(Node<T> *data) const;
+    T pop();
+    T peek() const;
 private:
-    LinkedList* list;
+    LinkedList<T>* list;
     int size;
 };
 
