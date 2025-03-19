@@ -3,16 +3,18 @@ include_directories(../include)
 
 add_executable(main
         main.cpp
-        linked_list.cpp
         Node.cpp
-        ../include/Node.h
         ../include/linked_list.h
-        ../include/stack.h
+        linked_list.cpp
         stack.cpp
-        ../exceptions/stack_overflow_exception.h
-        ../exceptions/stack_underflow_exception.h
+        ../include/stack.h
         queue.cpp
         ../include/queue.h
+        ../include/Node.h
+        ../exceptions/stack_overflow_exception.h
+        ../exceptions/stack_underflow_exception.h
         ../exceptions/queue_overflow_exception.h
         ../exceptions/queue_underflow_exception.h
+        ../include/graph.h
+        graph.cpp
 )
