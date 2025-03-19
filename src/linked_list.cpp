@@ -47,7 +47,7 @@ Node<T>* LinkedList<T>::get(const int i) const {
     Node<T>* current = head;
 
     int j = 0;
-    while (current->get_pointer(0) != nullptr && j <= i) {
+    while (current->get_pointer(0) != nullptr && j < i) {
         current = current->get_pointer(0);
         j++;
     }
@@ -70,39 +70,6 @@ void LinkedList<T>::print() {
 }
 
 template <typename T>
-T LinkedList<T>::remove(const int data) {
-    if (this->head == nullptr)
-        return 0;
-
-    if (this->head->get_data() == data) {
-        int currentData = this->head->get_data();
-        delete this->head;
-        head = nullptr; // Make sure head is updated after removal
-        length--;
-        return currentData;
-    }
-
-    Node<T>* current = this->head;
-    Node<T>* previous = nullptr;
-
-    while (current->get_pointer(0) != nullptr && current->get_data() != data) {
-        previous = current;
-        current = current->get_pointer(0);
-    }
-
-    if (previous == nullptr)
-        return 0;
-
-    previous->add_edge(current->get_pointer(0));
-    current->add_edge(nullptr);
-    int currentData = current->get_data();
-
-    delete current;
-    length--;
-    return currentData;
-}
-
-template <typename T>
 T LinkedList<T>::remove_at(const int i) {
     if (length <= i || i < 0 || head == nullptr)
         return 0;
@@ -110,7 +77,7 @@ T LinkedList<T>::remove_at(const int i) {
     length--;
 
     if (i == 0) {
-        int current_data = head->get_data();
+        T current_data = head->get_data();
         Node<T>* nextHead = head->get_pointer(0);
         delete head;
         head = nextHead;
@@ -131,14 +98,16 @@ T LinkedList<T>::remove_at(const int i) {
     previous->add_edge(current->get_pointer(0));
     current->set_edge(0, nullptr);
 
-    int currentData = current->get_data();
+    T currentData = current->get_data();
 
     delete current;
     return currentData;
 }
 
 template <typename T>
-void LinkedList<T>::insert(Node<T>* node) {
+void LinkedList<T>::insert(T data) {
+    Node<T>* node = new Node(data);
+
     if (head == nullptr) {
         head = node;
         length += 1;
@@ -157,3 +126,4 @@ void LinkedList<T>::insert(Node<T>* node) {
     length += 1;
 }
 template class LinkedList<int>;
+template class LinkedList<Node<int>*>;
