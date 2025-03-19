@@ -7,9 +7,11 @@ This project is to implmenting the key Datastucutres & Algorithms in C++.
   - [Stack](#stack)
   - [Queue](#queue)
   - [Array](#array)
+- [Algorithms](#algorithms)
 ## Datastructures
 ### Linked List
 ### Stack
 ### Queue
 ### Array
 ## Algorithms
+
