@@ -12,7 +12,7 @@ class Queue {
 public:
     Queue(int size);
     ~Queue();
-    void enqueue(Node<T>* node);
+    void enqueue(T node);
     T peek();
     T dequeue();
 private:

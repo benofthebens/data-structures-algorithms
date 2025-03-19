@@ -19,10 +19,10 @@ Queue<T>::~Queue() {
 }
 
 template <typename T>
-void Queue<T>::enqueue(Node<T>* node) {
+void Queue<T>::enqueue(T data) {
     if (list->get_length() == size)
         throw QueueOverflowException();
-    list->insert(node);
+    list->insert(data);
 }
 template <typename T>
 T Queue<T>::peek() {
