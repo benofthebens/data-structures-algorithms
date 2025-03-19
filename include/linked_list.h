@@ -4,7 +4,6 @@
 
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-#include "graph.h"
 #include "node.h"
 
 template <typename T>
@@ -18,7 +17,6 @@ class LinkedList {
     T remove_at(int i);
     T remove(int data);
     int get_length();
-    Node<T>* get_next();
     void print();
   private:
     Node<T>* head;
