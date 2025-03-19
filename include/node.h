@@ -12,10 +12,8 @@ class Node {
     Node(T data);
     ~Node();
     T get_data();
-
     Node<T> *get_pointer(int i) const;
-    std::vector<Node*>* get_pointers() const;
-    void add_edge(Node<T>* node);
+    void add_edge(Node<T>* node, bool directed = true);
     void set_edge(int i, Node<T>* node);
   private:
     std::vector<Node<T>*>* pointers;
