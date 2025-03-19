@@ -10,16 +10,18 @@
 #include "../exceptions/stack_underflow_exception.h"
 
 int main() {
-    Graph<int>* graph = new Graph<int>();
+    auto* graph = new Graph<Node<int>*>();
 
-    Node<int>* epic_node = new Node<int>(4);
-    Node<int>* another_epic_node = new Node<int>(5);
+    auto* node = new Node(4);
+    auto* another_node = new Node(3);
 
-    graph->add_node(another_epic_node);
-    graph->add_node(epic_node);
+    another_node->add_edge(node);
+    node->add_edge(another_node);
 
-    epic_node->add_edge(another_epic_node);
-    another_epic_node->add_edge(epic_node);
+    graph->add_node(node);
+    graph->add_node(another_node);
+
+    delete graph;
 
     return 0;
 }
