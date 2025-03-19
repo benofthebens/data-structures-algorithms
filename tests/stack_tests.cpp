@@ -11,8 +11,8 @@ TEST(StackTests, StackPush) {
     auto* stack = new Stack<int>(5);
 
     try {
-        stack->push(new Node(5));
-        stack->push(new Node(4));
+        stack->push(5);
+        stack->push(4);
     } catch (StackOverFlowException e) {
         std::cout << e.what();
     } catch (StackUnderFlowException e) {
@@ -24,9 +24,9 @@ TEST(StackTests, StackPush) {
 TEST(StackTests, StackPop) {
     auto* stack = new Stack<int>(5);
     try {
-        stack->push(new Node(5));
-        stack->push(new Node(4));
-        stack->push(new Node(3));
+        stack->push((5));
+        stack->push((4));
+        stack->push((3));
         stack->pop();
     } catch (StackOverFlowException e) {
         std::cout << e.what();

@@ -11,7 +11,7 @@
 TEST(QueueTests, Enqueue) {
     auto* queue = new Queue<int>(3);
     try {
-        queue->enqueue(new Node(3));
+        queue->enqueue((3));
     } catch (QueueOverflowException e ) {
         std::cout << e.what();
     }
@@ -21,8 +21,8 @@ TEST(QueueTests, Enqueue) {
 TEST(QueueTests, Dequeue) {
     auto* queue = new Queue<int>(3);
     try {
-        queue->enqueue(new Node(3));
-        queue->enqueue(new Node(2));
+        queue->enqueue((3));
+        queue->enqueue((2));
         queue->dequeue();
     } catch (QueueUnderflowException e) {
     }
