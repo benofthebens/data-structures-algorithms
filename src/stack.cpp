@@ -17,9 +17,9 @@ Stack<T>::~Stack() {
     delete list;
 }
 template <typename T>
-void Stack<T>::push(Node<T>* data) const {
+void Stack<T>::push(T data) const {
     if (list->get_length() >= size)
-        throw StackOverFlowException(data->get_data());
+        throw StackOverFlowException(data);
     list->insert(data);
 }
 template <typename T>

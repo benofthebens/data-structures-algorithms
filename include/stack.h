@@ -13,7 +13,7 @@ class Stack {
 public:
     Stack(int size);
     ~Stack();
-    void push(Node<T> *data) const;
+    void push(T data) const;
     T pop();
     T peek() const;
 private:
