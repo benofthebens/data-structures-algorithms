@@ -8,7 +8,7 @@
 #include "../exceptions/stack_underflow_exception.h"
 
 TEST(StackTests, StackPush) {
-    auto* stack = new Stack(5);
+    auto* stack = new Stack<int>(5);
 
     try {
         stack->push(new Node(5));
@@ -22,7 +22,7 @@ TEST(StackTests, StackPush) {
 }
 
 TEST(StackTests, StackPop) {
-    auto* stack = new Stack(5);
+    auto* stack = new Stack<int>(5);
     try {
         stack->push(new Node(5));
         stack->push(new Node(4));
