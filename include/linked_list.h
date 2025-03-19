@@ -4,20 +4,24 @@
 
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
+#include "graph.h"
 #include "node.h"
+
+template <typename T>
 class LinkedList {
   public:
     LinkedList();
     ~LinkedList();
-    Node* get_head() const;
-    Node* get(int i) const;
-    void insert(Node* node);
-    int remove_at(int i);
-    int remove(int data);
+    Node<T>* get_head() const;
+    Node<T>* get(int i) const;
+    void insert(Node<T>* node);
+    T remove_at(int i);
+    T remove(int data);
     int get_length();
+    Node<T>* get_next();
     void print();
   private:
-    Node* head;
+    Node<T>* head;
     int length;
 };
 #endif //LINKEDLIST_H

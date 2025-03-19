@@ -6,21 +6,22 @@
 
 #include <iostream>
 
+template<typename T>
 // Constructor
-LinkedList::LinkedList() {
+LinkedList<T>::LinkedList() {
     this->head = nullptr;
     this->length = 0;
 }
 
-// Destructor
-LinkedList::~LinkedList() {
+template<typename T>
+LinkedList<T>::~LinkedList() {
     if (head == nullptr)
         return;
 
-    Node* current = head;
+    Node<T>* current = head;
 
     while (current != nullptr) {
-        Node* next = current->get_pointer();
+        Node<T>* next = current->get_pointer(0);
         delete current;
         current = next;
     }
@@ -28,42 +29,48 @@ LinkedList::~LinkedList() {
     head = nullptr;
 }
 
-// Public Methods
-int LinkedList::get_length() {
+template <typename T>
+int LinkedList<T>::get_length() {
     return length;
 }
 
-Node *LinkedList::get_head() const {
+template <typename T>
+Node<T>* LinkedList<T>::get_head() const {
     return head;
 }
 
-Node *LinkedList::get(const int i) const {
+template <typename T>
+Node<T>* LinkedList<T>::get(const int i) const {
     if (i >= length || i < 0)
         return nullptr;
 
-    Node* current = head;
+    Node<T>* current = head;
 
-    for (int j = i; j > 0; j--) {
-        current = current->get_pointer();
+    int j = 0;
+    while (current->get_pointer(0) != nullptr && j <= i) {
+        current = current->get_pointer(0);
+        j++;
     }
 
     return current;
 }
 
-void LinkedList::print() {
-    Node* current = head;
+template <typename T>
+void LinkedList<T>::print() {
+    Node<T>* current = head;
     std::cout << "\t" << "Node" << "\t" << "Data" << "\t" << "Pointer" << std::endl;
 
     while (current != nullptr) {
         std::cout << current;
         std::cout << "\t" << current->get_data();
-        std::cout << "\t" << current->get_pointer();
+        std::cout << "\t" << current->get_pointer(0);
         std::cout << std::endl;
-        current = current->get_pointer();
+        current = current->get_pointer(0);
     }
 }
 
-int LinkedList::remove(const int data) {
+template <typename T>
+T LinkedList<T>::remove(const int data) {
     if (this->head == nullptr)
         return 0;
 
@@ -75,19 +82,19 @@ int LinkedList::remove(const int data) {
         return currentData;
     }
 
-    Node* current = this->head;
-    Node* previous = nullptr;
+    Node<T>* current = this->head;
+    Node<T>* previous = nullptr;
 
-    while (current->get_pointer() != nullptr && current->get_data() != data) {
+    while (current->get_pointer(0) != nullptr && current->get_data() != data) {
         previous = current;
-        current = current->get_pointer();
+        current = current->get_pointer(0);
     }
 
     if (previous == nullptr)
         return 0;
 
-    previous->set_pointer(current->get_pointer());
-    current->set_pointer(nullptr);
+    previous->add_edge(current->get_pointer(0));
+    current->add_edge(nullptr);
     int currentData = current->get_data();
 
     delete current;
@@ -95,7 +102,8 @@ int LinkedList::remove(const int data) {
     return currentData;
 }
 
-int LinkedList::remove_at(const int i) {
+template <typename T>
+T LinkedList<T>::remove_at(const int i) {
     if (length <= i || i < 0 || head == nullptr)
         return 0;
 
@@ -103,22 +111,25 @@ int LinkedList::remove_at(const int i) {
 
     if (i == 0) {
         int current_data = head->get_data();
-        Node* nextHead = head->get_pointer();
+        Node<T>* nextHead = head->get_pointer(0);
         delete head;
         head = nextHead;
         return current_data;
     }
 
-    Node* current = head;
-    Node* previous = nullptr;
+    Node<T>* current = head;
+    Node<T>* previous = nullptr;
 
-    for (int j = 0; j < i; j++) {
+    int j = 0;
+    while (current->get_pointer(0) != nullptr && j != i) {
         previous = current;
-        current = current->get_pointer();
+        current = current->get_pointer(0);
+        j++;
     }
 
-    previous->set_pointer(current->get_pointer());
-    current->set_pointer(nullptr);
+    previous->set_edge(0,nullptr);
+    previous->add_edge(current->get_pointer(0));
+    current->set_edge(0, nullptr);
 
     int currentData = current->get_data();
 
@@ -126,19 +137,23 @@ int LinkedList::remove_at(const int i) {
     return currentData;
 }
 
-void LinkedList::insert(Node *node) {
+template <typename T>
+void LinkedList<T>::insert(Node<T>* node) {
     if (head == nullptr) {
         head = node;
         length += 1;
+        head->add_edge(nullptr);
         return;
     }
 
-    Node* current = head;
+    Node<T>* current = head;
 
-    while (current->get_pointer() != nullptr) {
-        current = current->get_pointer();
+    while (current->get_pointer(0) != nullptr) {
+        current = current->get_pointer(0);
     }
 
-    current->set_pointer(node);
+    node->add_edge(nullptr);
+    current->set_edge(0, node);
     length += 1;
 }
+template class LinkedList<int>;
