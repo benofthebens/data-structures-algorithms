@@ -7,15 +7,16 @@
 #include <vector>
 
 #include "node.h"
+#include "linked_list.h"
 
 template <typename T>
 class Graph {
 public:
     Graph();
     ~Graph();
-    Node<T>* get_node_at(int i);
-    void add_node(Node<T>* node);
+    Node<T> *get_node_at(int i);
+    void add_node(T data);
 private:
-    std::vector<Node<T>*>* node_list;
+    LinkedList<T>* node_list;
 };
 #endif //GRAPH_H
