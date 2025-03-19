@@ -25,6 +25,7 @@ add_executable(tests
         stack_tests.cpp
         ../include/graph.h
         ../src/graph.cpp
+        graph_tests.cpp
 )
 
 target_link_libraries(tests PRIVATE GTest::GTest GTest::Main)
