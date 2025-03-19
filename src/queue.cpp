@@ -7,26 +7,32 @@
 #include "../exceptions/queue_overflow_exception.h"
 #include "../exceptions/queue_underflow_exception.h"
 
-Queue::Queue(int size) {
+template <typename T>
+Queue<T>::Queue(int size) {
     this->size = size;
-    this->list = new LinkedList();
+    this->list = new LinkedList<T>();
 }
 
-Queue::~Queue() {
+template <typename T>
+Queue<T>::~Queue() {
     delete list;
 }
 
-void Queue::enqueue(Node *node) {
+template <typename T>
+void Queue<T>::enqueue(Node<T>* node) {
     if (list->get_length() == size)
         throw QueueOverflowException();
     list->insert(node);
 }
-int Queue::peek() {
+template <typename T>
+T Queue<T>::peek() {
     return list->get(0)->get_data();
 }
 
-int Queue::dequeue() {
+template <typename T>
+T Queue<T>::dequeue() {
     if (list->get(0) == nullptr)
         throw QueueUnderflowException();
     return list->remove_at(0);
 }
+template class Queue<int>;

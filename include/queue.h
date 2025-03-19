@@ -7,15 +7,16 @@
 #include "linked_list.h"
 #include "node.h"
 
+template <typename T>
 class Queue {
 public:
     Queue(int size);
     ~Queue();
-    void enqueue(Node* node);
-    int peek();
-    int dequeue();
+    void enqueue(Node<T>* node);
+    T peek();
+    T dequeue();
 private:
-    LinkedList* list;
+    LinkedList<T>* list;
     int size;
 };
 
