@@ -16,6 +16,7 @@ public:
     ~Graph();
     Node<T> *get_node_at(int i);
     void add_node(T data);
+    Node<T>* get_node(T data);
 private:
     LinkedList<T>* node_list;
 };
