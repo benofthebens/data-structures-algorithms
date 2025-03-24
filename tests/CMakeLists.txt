@@ -26,6 +26,10 @@ add_executable(tests
         ../include/graph.h
         ../src/graph.cpp
         graph_tests.cpp
+        ../include/tree.h
+        ../include/hash_map.h
+        ../src/tree.cpp
+        ../exceptions/tree_duplicate_data_exception.h
 )
 
 target_link_libraries(tests PRIVATE GTest::GTest GTest::Main)

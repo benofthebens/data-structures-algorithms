@@ -17,4 +17,8 @@ add_executable(main
         ../exceptions/queue_underflow_exception.h
         ../include/graph.h
         graph.cpp
+        ../include/tree.h
+        ../include/hash_map.h
+        tree.cpp
+        ../exceptions/tree_duplicate_data_exception.h
 )
