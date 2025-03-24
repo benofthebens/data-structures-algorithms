@@ -30,3 +30,4 @@ Node<T> * Graph<T>::get_node(T data) {
 }
 
 template class Graph<Node<int>*>;
+template class Graph<int>;
