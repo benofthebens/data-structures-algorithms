@@ -4,8 +4,8 @@
 
 #include "../include/queue.h"
 
-#include "../exceptions/queue_overflow_exception.h"
-#include "../exceptions/queue_underflow_exception.h"
+#include "../exceptions/queue/queue_overflow_exception.h"
+#include "../exceptions/queue/queue_underflow_exception.h"
 
 template <typename T>
 Queue<T>::Queue(int size) {
@@ -35,4 +35,11 @@ T Queue<T>::dequeue() {
         throw QueueUnderflowException();
     return list->remove_at(0);
 }
+
+template<typename T>
+bool Queue<T>::is_empty() {
+    return list->get_length() == 0;
+}
+
 template class Queue<int>;
+template class Queue<Node<int>*>;

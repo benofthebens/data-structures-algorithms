@@ -10,10 +10,10 @@ add_executable(tests
         ../include/Node.h
         ../src/node.cpp
         node_tests.cpp
-        ../exceptions/stack_overflow_exception.h
-        ../exceptions/stack_underflow_exception.h
-        ../exceptions/queue_overflow_exception.h
-        ../exceptions/queue_underflow_exception.h
+        ../exceptions/stack/stack_overflow_exception.h
+        ../exceptions/stack/stack_underflow_exception.h
+        ../exceptions/queue/queue_overflow_exception.h
+        ../exceptions/queue/queue_underflow_exception.h
         linked_list_tests.cpp
         ../src/linked_list.cpp
         ../include/linked_list.h
@@ -29,7 +29,7 @@ add_executable(tests
         ../include/tree.h
         ../include/hash_map.h
         ../src/tree.cpp
-        ../exceptions/tree_duplicate_data_exception.h
+        ../exceptions/tree/tree_duplicate_data_exception.h
 )
 
 target_link_libraries(tests PRIVATE GTest::GTest GTest::Main)

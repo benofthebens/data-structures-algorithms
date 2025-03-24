@@ -15,6 +15,7 @@ public:
     void enqueue(T node);
     T peek();
     T dequeue();
+    bool is_empty();
 private:
     LinkedList<T>* list;
     int size;

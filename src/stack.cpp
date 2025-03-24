@@ -4,8 +4,8 @@
 
 #include "stack.h"
 
-#include "../exceptions/stack_overflow_exception.h"
-#include "../exceptions/stack_underflow_exception.h"
+#include "../exceptions/stack/stack_overflow_exception.h"
+#include "../exceptions/stack/stack_underflow_exception.h"
 
 template <typename T>
 Stack<T>::Stack(int const size) {
