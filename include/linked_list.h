@@ -12,7 +12,8 @@ class LinkedList {
     LinkedList();
     ~LinkedList();
     Node<T>* get_head() const;
-    Node<T>* get(int i) const;
+    Node<T>* at(int i) const;
+  Node<T>* get(T data);
     void insert(T data);
     T remove_at(int i);
     int get_length();
