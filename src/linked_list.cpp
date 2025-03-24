@@ -74,7 +74,7 @@ template <typename T>
 Node<T>* LinkedList<T>::get(T data) {
     Node<T>* current = head;
     while (current != nullptr) {
-        if (current->get_data()->operator==(data)) {
+        if (current->eq(new Node(data))) {
             return current;
         }
         current = current->get_pointer(0);
@@ -138,7 +138,7 @@ T LinkedList<T>::remove_at(const int i) {
 
     // Update pointers
     previous->set_edge(0,nullptr);
-    previous->add_edge(current->get_pointer(0));
+    previous->add_edge(current->get_pointer(0)->get_data());
     current->set_edge(0, nullptr);
 
     // Gets data to be returned
@@ -161,8 +161,7 @@ void LinkedList<T>::insert(T data) {
     if (head == nullptr) {
         head = node;
         length += 1;
-        // set the p
-        head->add_edge(nullptr);
+        head->add_edge(0);
         return;
     }
 
@@ -173,7 +172,7 @@ void LinkedList<T>::insert(T data) {
     }
 
     // insert node at the end
-    node->add_edge(nullptr);
+    node->add_edge(0);
     current->set_edge(0, node);
     length += 1;
 }
