@@ -5,7 +5,6 @@
 #ifndef TREE_H
 #define TREE_H
 #include "graph.h"
-
 template <typename T>
 class Tree {
 public:
@@ -13,8 +12,8 @@ public:
     ~Tree();
     void add(T parent_data, T data);
     T remove();
+    Node<T> *get(T data);
 private:
-    Graph<Node<T>*>* graph;
     Node<T>* root;
 };
 
