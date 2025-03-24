@@ -6,22 +6,16 @@
 #include "node.h"
 #include "queue.h"
 #include "stack.h"
+#include "tree.h"
 #include "../exceptions/stack_overflow_exception.h"
 #include "../exceptions/stack_underflow_exception.h"
 
 int main() {
-    auto* graph = new Graph<Node<int>*>();
+    Tree<int>* tree = new Tree<int>();
+    int data = 4;
+    tree->add(0, data);
+    tree->add(4, 5);
 
-    auto* node = new Node(4);
-    auto* another_node = new Node(3);
-
-    another_node->add_edge(node);
-    node->add_edge(another_node);
-
-    graph->add_node(node);
-    graph->add_node(another_node);
-
-    delete graph;
 
     return 0;
 }
