@@ -26,12 +26,12 @@ void Queue<T>::enqueue(T data) {
 }
 template <typename T>
 T Queue<T>::peek() {
-    return list->get(0)->get_data();
+    return list->at(0)->get_data();
 }
 
 template <typename T>
 T Queue<T>::dequeue() {
-    if (list->get(0) == nullptr)
+    if (list->at(0) == nullptr)
         throw QueueUnderflowException();
     return list->remove_at(0);
 }
