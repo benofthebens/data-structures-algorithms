@@ -17,10 +17,15 @@ Node<T>::~Node() {
 }
 
 template <typename T>
-void Node<T>::add_edge(Node<T> *node, bool directed) {
-    pointers->push_back(node);
+void Node<T>::add_edge(T node, bool directed) {
+    Node<T>* newNode = new Node(node);
+    if (node == 0)
+        newNode = nullptr;
+
+    pointers->push_back(newNode);
+
     if (!directed)
-        node->add_edge(this, true);
+        newNode->add_edge(data, true);
 }
 
 template <typename T>
@@ -33,15 +38,28 @@ Node<T> *Node<T>::get_pointer(int i) const {
     return pointers->at(i);
 }
 
+template<typename T>
+std::vector<Node<T> *> * Node<T>::get_all_pointers() {
+    return pointers;
+}
+
 template <typename T>
 void Node<T>::set_edge(int i, Node<T>* node) {
     pointers->at(i) = node;
 }
 
 template<typename T>
-bool Node<T>::operator==(const Node<T>* node) const{
-    std::cout << "AAA";
-    return (node == this) || (this->get_data() == node->get_data());
+bool Node<T>::eq(const Node *node) const {
+
+    if (node == nullptr) return false;
+    if (this == node) return true;
+    if (this->get_data() == node->get_data()) return true;
+
+    if constexpr (std::is_pointer_v<T>) {
+        return this->get_data()->eq(node->get_data());
+    }
+
+    return false;
 }
 
 template class Node<int>;

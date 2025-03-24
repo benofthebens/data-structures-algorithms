@@ -13,9 +13,10 @@ class Node {
     ~Node();
     T get_data() const;
     Node<T> *get_pointer(int i) const;
-    void add_edge(Node<T>* node, bool directed = true);
+    std::vector<Node*>* get_all_pointers();
+    void add_edge(T node, bool directed = true);
     void set_edge(int i, Node<T>* node);
-    bool operator==(const Node* node)const ;
+    bool eq(const Node* node)const ;
   private:
     std::vector<Node<T>*>* pointers;
     T data;
