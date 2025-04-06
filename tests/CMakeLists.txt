@@ -1,35 +1,51 @@
-find_package(GTest REQUIRED)
+include(FetchContent)
 
-include_directories(
-        ${GTEST_INCLUDE_DIRS}
-        "../include"
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
 )
 
-add_executable(tests
-        main.cpp
-        ../include/Node.h
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(googletest)
+
+set(SRC_FILES
         ../src/node.cpp
-        node_tests.cpp
+        ../src/linked_list.cpp
+        ../src/queue.cpp
+        ../src/graph.cpp
+        ../src/tree.cpp
+        ../src/stack.cpp
+)
+
+set(EXCEPTION_HEADERS
         ../exceptions/stack/stack_overflow_exception.h
         ../exceptions/stack/stack_underflow_exception.h
         ../exceptions/queue/queue_overflow_exception.h
         ../exceptions/queue/queue_underflow_exception.h
-        linked_list_tests.cpp
-        ../src/linked_list.cpp
-        ../include/linked_list.h
-        ../include/queue.h
-        ../src/queue.cpp
-        ../include/stack.h
-        ../src/stack.cpp
-        queue_tests.cpp
-        stack_tests.cpp
-        ../include/graph.h
-        ../src/graph.cpp
-        graph_tests.cpp
-        ../include/tree.h
-        ../include/hash_map.h
-        ../src/tree.cpp
         ../exceptions/tree/tree_duplicate_data_exception.h
 )
 
-target_link_libraries(tests PRIVATE GTest::GTest GTest::Main)
+set(TESTS_SRC
+        main.cpp
+        node_tests.cpp
+        linked_list_tests.cpp
+        queue_tests.cpp
+        stack_tests.cpp
+        graph_tests.cpp
+)  
+
+add_executable(tests
+        ${SRC_FILES}
+        ${EXCEPTION_HEADERS}
+        ${TEST_SRC}
+)
+
+target_include_directories(tests PRIVATE
+        ../include
+        ../exceptions/stack
+        ../exceptions/queue
+        ../exceptions/tree
+)
+
+target_link_libraries(tests PRIVATE gtest gtest_main)
