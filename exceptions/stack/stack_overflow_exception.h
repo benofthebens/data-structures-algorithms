@@ -9,6 +9,6 @@
 class StackOverFlowException final : public std::runtime_error {
 public:
     explicit StackOverFlowException(const int data) :
-        std::runtime_error("Stack overflow unable to push " + std::to_string(data) + "to stack") {}
+        std::runtime_error("Stack overflow unable to push to stack") {}
 };
 #endif //STACK_OVERFLOW_EXCEPTION_H
