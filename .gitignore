@@ -2,3 +2,16 @@ build/
 CMakeFiles/
 .idea/
 Makefile
+.vs/
+*.vcxproj*
+*/Debug/
+src/main.dir/
+tests/tests.dir/ 
+x64/
+lib/
+bin/
+_deps/
+out/
+CMakeCache.txt
+*.cmake
+*.sln
