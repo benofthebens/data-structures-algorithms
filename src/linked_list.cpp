@@ -74,7 +74,7 @@ template <typename T>
 Node<T>* LinkedList<T>::get(T data) {
     Node<T>* current = head;
     while (current != nullptr) {
-        if (current->eq(new Node(data))) {
+        if (current->eq(new Node<T>(data))) {
             return current;
         }
         current = current->get_pointer(0);
@@ -156,7 +156,7 @@ T LinkedList<T>::remove_at(const int i) {
 template <typename T>
 void LinkedList<T>::insert(T data) {
     // instantiate node with data
-    auto* node = new Node(data);
+    auto* node = new Node<T>(data);
 
     if (head == nullptr) {
         head = node;
