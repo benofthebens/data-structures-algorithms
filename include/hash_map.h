@@ -1,20 +1,28 @@
-//
-// Created by benja on 20/03/2025.
-//
-
 #ifndef HASH_MAP_H
 #define HASH_MAP_H
+
 #include <vector>
 
-template <typename T, typename C>
+template <typename K, typename V>
 class HashMap {
-public:
-    HashMap();
-    ~HashMap();
-    void add(T key, C value);
-    void remove(T key);
 private:
-    int hash_function();
 
+    struct HashEntry {
+        K key;
+        V value;
+        bool occupied = false;
+    };
+
+    unsigned int hash(K key);
+    unsigned int capacity = 16;
+    unsigned int size = 0;
+    std::vector<HashEntry> buckets;
+public:
+    HashMap() : buckets(capacity) {}
+    ~HashMap() = default;
+    void put(const K& key, const V& value);
+    V& value_of(const K& key);
+    bool contains_key(const K& value);
+    bool is_empty();
 };
-#endif //HASH_MAP_H
+#endif

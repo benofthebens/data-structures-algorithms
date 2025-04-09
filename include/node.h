@@ -8,17 +8,19 @@
 
 template <typename T>
 class Node {
-  public:
-    Node(T data);
+private:
+    T data;
+    std::vector<Node<T>*>* adj_nodes;
+public:
+    Node(T data = 0)
+        : data(data), adj_nodes(new std::vector<Node<T>*>) {}
     ~Node();
     T get_data() const;
-    Node<T> *get_pointer(int i) const;
-    std::vector<Node*>* get_all_pointers();
-    void add_edge(T node, bool directed = true);
-    void set_edge(int i, Node<T>* node);
-    bool eq(const Node* node)const ;
-  private:
-    std::vector<Node<T>*>* pointers;
-    T data;
+    std::vector<Node<T>*>* get_adj_nodes() const;
+    void set_adj_nodes_size(const int n);
+    void push(Node<T>* node);
+    void assign(const int i, Node<T>* node);
+    bool operator==(const Node<T>& obj) const;
 };
+
 #endif //NODE_H

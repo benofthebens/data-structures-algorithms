@@ -11,11 +11,6 @@ FetchContent_MakeAvailable(googletest)
 
 set(SRC_FILES
         ../src/node.cpp
-        ../src/linked_list.cpp
-        ../src/queue.cpp
-        ../src/graph.cpp
-        ../src/tree.cpp
-        ../src/stack.cpp
 )
 
 set(EXCEPTION_HEADERS
