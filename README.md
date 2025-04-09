@@ -10,8 +10,59 @@ This project is to implmenting the key Datastucutres & Algorithms in C++.
 - [Algorithms](#algorithms)
 ## Datastructures
 ### Linked List
+#### Insertion
+---
+#### Deletion 
+---
+#### Appending
+---
+#### Access
+---
 ### Stack
+#### Insertion
+---
+#### Deletion 
+---
+#### Appending
+---
+#### Access
+---
+
 ### Queue
+#### Insertion
+---
+#### Deletion 
+---
+#### Appending
+---
+#### Access
+---
 ### Array
+#### Insertion
+---
+#### Deletion 
+---
+#### Appending
+---
+#### Access
+---
+### Hash Map
+#### Insertion
+---
+#### Deletion 
+---
+#### Appending
+---
+#### Access
+---
+### Graph
+#### Insertion
+---
+#### Deletion 
+---
+#### Appending
+---
+#### Access
+---
 ## Algorithms
 
