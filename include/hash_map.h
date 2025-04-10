@@ -1,7 +1,7 @@
 #ifndef HASH_MAP_H
 #define HASH_MAP_H
 
-#include <vector>
+#include <array>
 
 template <typename K, typename V>
 class HashMap {
@@ -16,9 +16,9 @@ private:
     unsigned int hash(K key);
     unsigned int capacity = 16;
     unsigned int size = 0;
-    std::vector<HashEntry> buckets;
+    std::array<HashEntry, 16> buckets;
 public:
-    HashMap() : buckets(capacity) {}
+    HashMap() {}
     ~HashMap() = default;
     void put(const K& key, const V& value);
     V& value_of(const K& key);

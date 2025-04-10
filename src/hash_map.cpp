@@ -56,6 +56,5 @@ bool HashMap<K, V>::is_empty() {
     return (size == 0);
 }
 
-
 template class HashMap<int, int>;
 template class HashMap<int, Node<int>*>;
