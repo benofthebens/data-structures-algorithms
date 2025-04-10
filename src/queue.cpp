@@ -1,5 +1,4 @@
 #include "queue.h"
-#include "../exceptions/queue/queue_underflow_exception.h"
 
 template <typename T>
 void Queue<T>::enqueue(T data) {
@@ -8,8 +7,6 @@ void Queue<T>::enqueue(T data) {
 
 template <typename T>
 T Queue<T>::dequeue() {
-    if (list.get_size() == 0)
-        throw QueueUnderflowException();
     return list.remove(0);
 }
  
